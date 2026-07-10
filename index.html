@@ -3,7 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Professional CRM Console</title>
+  <title>Switchboard — Professional CRM</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
@@ -67,6 +68,7 @@
       width: 100%;
     }
 
+    /* ========== HEADER ========== */
     header {
       background: var(--bg-secondary);
       border-bottom: 1px solid var(--border);
@@ -115,6 +117,23 @@
       gap: 0.75rem;
     }
 
+    .search-box {
+      background: var(--bg-tertiary);
+      border: 1px solid var(--border);
+      padding: 0.5rem 0.75rem;
+      border-radius: 0.5rem;
+      color: var(--text-primary);
+      font-size: 0.9rem;
+      transition: all 0.3s ease;
+      width: 200px;
+    }
+
+    .search-box:focus {
+      outline: none;
+      border-color: var(--accent);
+      background: var(--bg-primary);
+    }
+
     .icon-button {
       background: none;
       border: none;
@@ -135,6 +154,23 @@
       color: var(--accent);
     }
 
+    .notification-badge {
+      position: absolute;
+      top: -4px;
+      right: -4px;
+      background: var(--danger);
+      color: white;
+      border-radius: 50%;
+      width: 18px;
+      height: 18px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.65rem;
+      font-weight: 700;
+    }
+
+    /* ========== MAIN CONTAINER ========== */
     .main-container {
       display: flex;
       flex: 1;
@@ -143,6 +179,7 @@
       min-height: 0;
     }
 
+    /* ========== SIDEBAR ========== */
     .sidebar {
       width: 250px;
       background: var(--bg-secondary);
@@ -207,6 +244,7 @@
       flex-shrink: 0;
     }
 
+    /* ========== CONTENT AREA ========== */
     .content {
       flex: 1;
       display: flex;
@@ -219,17 +257,17 @@
       padding: 1.5rem;
       border-bottom: 1px solid var(--border);
       flex-shrink: 0;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      flex-wrap: wrap;
-      gap: 1rem;
     }
 
     .content-header h1 {
       font-size: 1.5rem;
       font-weight: 700;
-      margin-bottom: 0;
+      margin-bottom: 0.25rem;
+    }
+
+    .content-header p {
+      color: var(--text-secondary);
+      font-size: 0.9rem;
     }
 
     .content-body {
@@ -247,6 +285,7 @@
       display: block;
     }
 
+    /* ========== CARDS ========== */
     .card {
       background: var(--bg-primary);
       border: 1px solid var(--border);
@@ -288,19 +327,40 @@
       font-weight: 600;
     }
 
-    .badge-success { background: rgba(16, 185, 129, 0.1); color: var(--success); }
-    .badge-warning { background: rgba(245, 158, 11, 0.1); color: var(--warning); }
-    .badge-danger { background: rgba(239, 68, 68, 0.1); color: var(--danger); }
-    .badge-info { background: rgba(6, 182, 212, 0.1); color: var(--info); }
+    .badge-success {
+      background: rgba(16, 185, 129, 0.1);
+      color: var(--success);
+    }
 
+    .badge-warning {
+      background: rgba(245, 158, 11, 0.1);
+      color: var(--warning);
+    }
+
+    .badge-danger {
+      background: rgba(239, 68, 68, 0.1);
+      color: var(--danger);
+    }
+
+    .badge-info {
+      background: rgba(6, 182, 212, 0.1);
+      color: var(--info);
+    }
+
+    /* ========== GRID ========== */
     .grid {
       display: grid;
       gap: 1rem;
       margin-bottom: 1.5rem;
     }
 
-    .grid-2 { grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); }
-    .grid-3 { grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); }
+    .grid-2 {
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    }
+
+    .grid-3 {
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    }
 
     .stat-box {
       background: var(--bg-primary);
@@ -322,6 +382,7 @@
       color: var(--text-secondary);
     }
 
+    /* ========== BUTTONS ========== */
     .btn {
       padding: 0.75rem 1.5rem;
       border: none;
@@ -385,6 +446,7 @@
       flex-wrap: wrap;
     }
 
+    /* ========== LIST ========== */
     .list-item {
       display: flex;
       align-items: center;
@@ -393,7 +455,9 @@
       border-bottom: 1px solid var(--border);
     }
 
-    .list-item:last-child { border-bottom: none; }
+    .list-item:last-child {
+      border-bottom: none;
+    }
 
     .list-item-content {
       flex: 1;
@@ -416,6 +480,7 @@
       gap: 0.5rem;
     }
 
+    /* ========== TOAST ========== */
     .toast {
       position: fixed;
       bottom: 1.5rem;
@@ -430,10 +495,17 @@
     }
 
     @keyframes slideIn {
-      from { transform: translateX(400px); opacity: 0; }
-      to { transform: translateX(0); opacity: 1; }
+      from {
+        transform: translateX(400px);
+        opacity: 0;
+      }
+      to {
+        transform: translateX(0);
+        opacity: 1;
+      }
     }
 
+    /* ========== MODAL ========== */
     .modal {
       display: none;
       position: fixed;
@@ -459,13 +531,17 @@
       max-width: 500px;
       box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
       animation: fadeIn 0.3s ease;
-      max-height: 90vh;
-      overflow-y: auto;
     }
 
     @keyframes fadeIn {
-      from { opacity: 0; transform: scale(0.95); }
-      to { opacity: 1; transform: scale(1); }
+      from {
+        opacity: 0;
+        transform: scale(0.95);
+      }
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
     }
 
     .modal-header {
@@ -493,6 +569,10 @@
 
     .modal-close:hover {
       color: var(--text-primary);
+    }
+
+    .modal-body {
+      margin-bottom: 1.5rem;
     }
 
     .form-group {
@@ -523,32 +603,32 @@
       background: var(--bg-primary);
     }
 
-    table {
-      width: 100%;
-      border-collapse: collapse;
-    }
-
-    th {
-      background: var(--bg-tertiary);
-      padding: 1rem;
-      text-align: left;
-      font-weight: 600;
-      border-bottom: 1px solid var(--border);
-    }
-
-    td {
-      padding: 1rem;
-      border-bottom: 1px solid var(--border);
-    }
-
-    tr:hover {
-      background: var(--bg-tertiary);
-    }
-
+    /* ========== RESPONSIVE ========== */
     @media (max-width: 768px) {
-      header { padding: 0.75rem; }
-      .menu-toggle { display: flex; }
-      .logo { font-size: 1.1rem; }
+      header {
+        padding: 0.75rem;
+      }
+
+      .menu-toggle {
+        display: flex;
+      }
+
+      .logo {
+        font-size: 1.1rem;
+      }
+
+      .search-box {
+        display: none;
+      }
+
+      .header-right {
+        gap: 0.5rem;
+      }
+
+      .icon-button {
+        font-size: 1rem;
+      }
+
       .sidebar {
         position: absolute;
         top: 0;
@@ -559,807 +639,937 @@
         box-shadow: 2px 0 15px rgba(0, 0, 0, 0.2);
         transition: left 0.3s ease;
       }
-      .sidebar.active { left: 0; }
-      .main-container { position: relative; }
-      .content-header h1 { font-size: 1.25rem; }
-      .card { padding: 1rem; }
-      .grid-2, .grid-3 { grid-template-columns: 1fr; }
-      .stat-box { padding: 1rem; }
-      .stat-value { font-size: 1.75rem; }
-      .btn { padding: 0.65rem 1.25rem; font-size: 0.85rem; }
-      .modal-content { width: 95%; padding: 1.5rem; }
-      .toast { bottom: 1rem; right: 1rem; left: 1rem; width: auto; }
+
+      .sidebar.active {
+        left: 0;
+      }
+
+      .main-container {
+        position: relative;
+      }
+
+      .content-header h1 {
+        font-size: 1.25rem;
+      }
+
+      .card {
+        padding: 1rem;
+      }
+
+      .grid-2,
+      .grid-3 {
+        grid-template-columns: 1fr;
+      }
+
+      .stat-box {
+        padding: 1rem;
+      }
+
+      .stat-value {
+        font-size: 1.75rem;
+      }
+
+      .btn {
+        padding: 0.65rem 1.25rem;
+        font-size: 0.85rem;
+      }
+
+      .btn-group {
+        gap: 0.5rem;
+      }
+
+      .modal-content {
+        width: 95%;
+        padding: 1.5rem;
+      }
+
+      .toast {
+        bottom: 1rem;
+        right: 1rem;
+        left: 1rem;
+        width: auto;
+      }
     }
 
     @media (max-width: 480px) {
-      header { padding: 0.75rem 0.5rem; }
-      .logo { font-size: 1rem; }
-      .content-body { padding: 1rem; }
-      .content-header { padding: 1rem; }
-      .content-header h1 { font-size: 1.1rem; }
-      .card { padding: 0.75rem; }
-      .card-header { flex-direction: column; align-items: flex-start; }
-      .btn { padding: 0.6rem 1rem; font-size: 0.8rem; width: 100%; }
-      .btn-group { flex-direction: column; }
-      .list-item { flex-direction: column; align-items: flex-start; gap: 0.75rem; }
-      table { font-size: 0.85rem; }
-      th, td { padding: 0.75rem; }
+      header {
+        padding: 0.75rem 0.5rem;
+      }
+
+      .logo {
+        font-size: 1rem;
+      }
+
+      .logo i {
+        display: none;
+      }
+
+      .content-body {
+        padding: 1rem;
+      }
+
+      .content-header {
+        padding: 1rem;
+      }
+
+      .content-header h1 {
+        font-size: 1.1rem;
+      }
+
+      .card {
+        padding: 0.75rem;
+        margin-bottom: 1rem;
+      }
+
+      .card-header {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .btn {
+        padding: 0.6rem 1rem;
+        font-size: 0.8rem;
+        width: 100%;
+      }
+
+      .btn-group {
+        flex-direction: column;
+      }
+
+      .list-item {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.75rem;
+      }
+
+      .list-item-actions {
+        width: 100%;
+        justify-content: flex-start;
+      }
+
+      .stat-box {
+        padding: 0.75rem;
+      }
+
+      .stat-value {
+        font-size: 1.5rem;
+      }
     }
   </style>
 </head>
 <body>
   <div id="app">
+    <!-- HEADER -->
     <header>
       <div class="header-left">
-        <button class="menu-toggle" onclick="toggleSidebar()">
+        <button class="menu-toggle" id="menuToggle">
           <i class="fas fa-bars"></i>
         </button>
         <div class="logo">
-          <i class="fas fa-chart-pie"></i>
-          <span>CRM Pro</span>
+          <i class="fas fa-phone"></i>
+          <span>Switchboard</span>
         </div>
       </div>
+      <input type="text" class="search-box" placeholder="Search...">
       <div class="header-right">
-        <button class="icon-button" onclick="toggleTheme()" title="Toggle Theme">
+        <button class="icon-button" id="settingsBtn" title="Settings">
+          <i class="fas fa-cog"></i>
+        </button>
+        <button class="icon-button" id="bellBtn" title="Notifications">
+          <i class="fas fa-bell"></i>
+          <span class="notification-badge">3</span>
+        </button>
+        <button class="icon-button" id="themeToggle" title="Toggle Theme">
           <i class="fas fa-moon"></i>
         </button>
-        <button class="icon-button" onclick="openModal('exportModal')" title="Export Data">
-          <i class="fas fa-download"></i>
+        <button class="icon-button" id="profileBtn" title="Profile">
+          <i class="fas fa-user-circle"></i>
         </button>
-        <button class="icon-button" onclick="document.getElementById('importFile').click()" title="Import Data">
-          <i class="fas fa-upload"></i>
-        </button>
-        <input type="file" id="importFile" accept=".json" style="display:none" onchange="importData(event)">
       </div>
     </header>
 
     <div class="main-container">
+      <!-- SIDEBAR -->
       <aside class="sidebar" id="sidebar">
         <div class="sidebar-content">
           <div class="nav-section">
             <div class="nav-label">Main</div>
-            <button class="nav-item active" onclick="switchSection('dashboard')">
-              <i class="fas fa-th-large"></i> Dashboard
+            <button class="nav-item active" data-section="dashboard">
+              <i class="fas fa-th-large"></i>
+              <span>Dashboard</span>
             </button>
-            <button class="nav-item" onclick="switchSection('contacts')">
-              <i class="fas fa-users"></i> Contacts
+            <button class="nav-item" data-section="calls">
+              <i class="fas fa-phone"></i>
+              <span>Calls</span>
             </button>
-            <button class="nav-item" onclick="switchSection('deals')">
-              <i class="fas fa-handshake"></i> Deals
+            <button class="nav-item" data-section="messages">
+              <i class="fas fa-comments"></i>
+              <span>Messages</span>
             </button>
-            <button class="nav-item" onclick="switchSection('campaigns')">
-              <i class="fas fa-megaphone"></i> Campaigns
+            <button class="nav-item" data-section="contacts">
+              <i class="fas fa-users"></i>
+              <span>Contacts</span>
             </button>
           </div>
 
           <div class="nav-section">
             <div class="nav-label">Business</div>
-            <button class="nav-item" onclick="switchSection('tasks')">
-              <i class="fas fa-tasks"></i> Tasks
+            <button class="nav-item" data-section="campaigns">
+              <i class="fas fa-megaphone"></i>
+              <span>Campaigns</span>
             </button>
-            <button class="nav-item" onclick="switchSection('reports')">
-              <i class="fas fa-chart-line"></i> Reports
+            <button class="nav-item" data-section="reports">
+              <i class="fas fa-chart-line"></i>
+              <span>Reports</span>
             </button>
           </div>
 
           <div class="nav-section">
-            <div class="nav-label">Admin</div>
-            <button class="nav-item" onclick="switchSection('settings')">
-              <i class="fas fa-cog"></i> Settings
+            <div class="nav-label">Administration</div>
+            <button class="nav-item" data-section="admin">
+              <i class="fas fa-lock"></i>
+              <span>Admin Panel</span>
+            </button>
+            <button class="nav-item" data-section="settings">
+              <i class="fas fa-sliders-h"></i>
+              <span>Settings</span>
             </button>
           </div>
         </div>
       </aside>
 
+      <!-- CONTENT -->
       <div class="content">
-        <!-- DASHBOARD -->
+        <!-- DASHBOARD SECTION -->
         <section id="dashboard" class="section active">
           <div class="content-header">
             <h1>Dashboard</h1>
+            <p>Welcome back! Here's your real-time overview.</p>
           </div>
           <div class="content-body">
+            <!-- Stats Grid -->
             <div class="grid grid-3">
               <div class="stat-box">
-                <div class="stat-value" id="totalContacts">0</div>
-                <div class="stat-label">Total Contacts</div>
+                <div class="stat-value">1,234</div>
+                <div class="stat-label">Total Calls</div>
               </div>
               <div class="stat-box">
-                <div class="stat-value" id="totalDeals">0</div>
-                <div class="stat-label">Active Deals</div>
+                <div class="stat-value">4.2</div>
+                <div class="stat-label">Avg Duration (min)</div>
               </div>
               <div class="stat-box">
-                <div class="stat-value" id="totalCampaigns">0</div>
-                <div class="stat-label">Campaigns</div>
+                <div class="stat-value">94%</div>
+                <div class="stat-label">Satisfaction Rate</div>
+              </div>
+            </div>
+
+            <!-- Active Agents -->
+            <div class="card">
+              <div class="card-header">
+                <div class="card-title">Active Agents</div>
+                <span class="badge badge-success">12 Online</span>
+              </div>
+              <div class="list-item">
+                <div class="list-item-content">
+                  <div class="list-item-title">Sarah Johnson</div>
+                  <div class="list-item-subtitle">On Call • 5 min 32 sec</div>
+                </div>
+                <div class="list-item-actions">
+                  <button class="btn btn-sm btn-secondary">View</button>
+                </div>
+              </div>
+              <div class="list-item">
+                <div class="list-item-content">
+                  <div class="list-item-title">Mike Chen</div>
+                  <div class="list-item-subtitle">Available • Idle</div>
+                </div>
+                <div class="list-item-actions">
+                  <button class="btn btn-sm btn-secondary">View</button>
+                </div>
+              </div>
+              <div class="list-item">
+                <div class="list-item-content">
+                  <div class="list-item-title">Emma Davis</div>
+                  <div class="list-item-subtitle">On Call • 2 min 15 sec</div>
+                </div>
+                <div class="list-item-actions">
+                  <button class="btn btn-sm btn-secondary">View</button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Recent Activity -->
+            <div class="card">
+              <div class="card-header">
+                <div class="card-title">Recent Activity</div>
+              </div>
+              <div class="list-item">
+                <div class="list-item-content">
+                  <div class="list-item-title">Call Ended</div>
+                  <div class="list-item-subtitle">John Doe • 2 minutes ago</div>
+                </div>
+                <span class="badge badge-info">14 min call</span>
+              </div>
+              <div class="list-item">
+                <div class="list-item-content">
+                  <div class="list-item-title">Voicemail Received</div>
+                  <div class="list-item-subtitle">Jane Smith • 15 minutes ago</div>
+                </div>
+                <span class="badge badge-warning">Listen</span>
+              </div>
+              <div class="list-item">
+                <div class="list-item-content">
+                  <div class="list-item-title">Campaign Started</div>
+                  <div class="list-item-subtitle">Summer Promotion • 1 hour ago</div>
+                </div>
+                <span class="badge badge-success">Active</span>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- CALLS SECTION -->
+        <section id="calls" class="section">
+          <div class="content-header">
+            <h1>Active Calls</h1>
+            <p>Manage and monitor all ongoing calls</p>
+          </div>
+          <div class="content-body">
+            <div class="card">
+              <div class="card-header">
+                <div class="card-title">Current Call</div>
+                <span class="badge badge-success">Active</span>
+              </div>
+              <div style="padding: 1.5rem; text-align: center;">
+                <div style="margin-bottom: 1.5rem;">
+                  <div class="stat-value" style="margin-bottom: 0.5rem;">05:32</div>
+                  <div style="color: var(--text-secondary); margin-bottom: 1rem;">Call Duration</div>
+                  <div style="font-weight: 600; margin-bottom: 0.25rem;">John Doe</div>
+                  <div style="color: var(--text-secondary);">+1 (555) 123-4567</div>
+                </div>
+              </div>
+              <div class="btn-group" style="justify-content: center; margin-top: 1rem;">
+                <button class="btn btn-secondary btn-sm" onclick="toggleMute(this)">
+                  <i class="fas fa-microphone"></i> Mute
+                </button>
+                <button class="btn btn-secondary btn-sm" onclick="toggleHold(this)">
+                  <i class="fas fa-pause"></i> Hold
+                </button>
+                <button class="btn btn-secondary btn-sm" onclick="transfer()">
+                  <i class="fas fa-share"></i> Transfer
+                </button>
+                <button class="btn btn-danger btn-sm" onclick="endCall()">
+                  <i class="fas fa-phone-slash"></i> End Call
+                </button>
               </div>
             </div>
 
             <div class="card">
               <div class="card-header">
-                <div class="card-title">Recent Activities</div>
+                <div class="card-title">Queued Calls</div>
+                <span class="badge badge-warning">3 Waiting</span>
               </div>
-              <div id="recentActivities"></div>
+              <div class="list-item">
+                <div class="list-item-content">
+                  <div class="list-item-title">Alice Wilson</div>
+                  <div class="list-item-subtitle">Waiting • 3 minutes</div>
+                </div>
+                <div class="list-item-actions">
+                  <button class="btn btn-sm btn-primary">Accept</button>
+                </div>
+              </div>
+              <div class="list-item">
+                <div class="list-item-content">
+                  <div class="list-item-title">Bob Martinez</div>
+                  <div class="list-item-subtitle">Waiting • 1 minute</div>
+                </div>
+                <div class="list-item-actions">
+                  <button class="btn btn-sm btn-primary">Accept</button>
+                </div>
+              </div>
+              <div class="list-item">
+                <div class="list-item-content">
+                  <div class="list-item-title">Carol Thompson</div>
+                  <div class="list-item-subtitle">Waiting • 45 seconds</div>
+                </div>
+                <div class="list-item-actions">
+                  <button class="btn btn-sm btn-primary">Accept</button>
+                </div>
+              </div>
             </div>
           </div>
         </section>
 
-        <!-- CONTACTS -->
+        <!-- MESSAGES SECTION -->
+        <section id="messages" class="section">
+          <div class="content-header">
+            <h1>Messages & Voicemails</h1>
+            <p>View and manage your messages</p>
+          </div>
+          <div class="content-body">
+            <div class="card">
+              <div class="card-header">
+                <div class="card-title">Voicemails</div>
+                <span class="badge badge-warning">5 New</span>
+              </div>
+              <div class="list-item">
+                <div class="list-item-content">
+                  <div class="list-item-title">Robert Foster</div>
+                  <div class="list-item-subtitle">2 hours ago • 2:34</div>
+                </div>
+                <div class="list-item-actions">
+                  <button class="btn btn-sm btn-secondary" onclick="playVoicemail(this)">
+                    <i class="fas fa-play"></i> Play
+                  </button>
+                  <button class="btn btn-sm btn-danger" onclick="deleteVoicemail(this)">
+                    <i class="fas fa-trash"></i> Delete
+                  </button>
+                </div>
+              </div>
+              <div class="list-item">
+                <div class="list-item-content">
+                  <div class="list-item-title">Patricia Nelson</div>
+                  <div class="list-item-subtitle">4 hours ago • 1:15</div>
+                </div>
+                <div class="list-item-actions">
+                  <button class="btn btn-sm btn-secondary" onclick="playVoicemail(this)">
+                    <i class="fas fa-play"></i> Play
+                  </button>
+                  <button class="btn btn-sm btn-danger" onclick="deleteVoicemail(this)">
+                    <i class="fas fa-trash"></i> Delete
+                  </button>
+                </div>
+              </div>
+              <div class="list-item">
+                <div class="list-item-content">
+                  <div class="list-item-title">Kevin Brown</div>
+                  <div class="list-item-subtitle">6 hours ago • 1:48</div>
+                </div>
+                <div class="list-item-actions">
+                  <button class="btn btn-sm btn-secondary" onclick="playVoicemail(this)">
+                    <i class="fas fa-play"></i> Play
+                  </button>
+                  <button class="btn btn-sm btn-danger" onclick="deleteVoicemail(this)">
+                    <i class="fas fa-trash"></i> Delete
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <div class="card">
+              <div class="card-header">
+                <div class="card-title">Recent Text Messages</div>
+              </div>
+              <div class="list-item">
+                <div class="list-item-content">
+                  <div class="list-item-title">David Lee</div>
+                  <div class="list-item-subtitle">Sure, I'll call you back tomorrow</div>
+                </div>
+                <div class="list-item-actions">
+                  <button class="btn btn-sm btn-secondary" onclick="replyMessage()">
+                    <i class="fas fa-reply"></i> Reply
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- CONTACTS SECTION -->
         <section id="contacts" class="section">
           <div class="content-header">
             <h1>Contacts</h1>
-            <button class="btn btn-primary" onclick="openModal('contactModal')">
-              <i class="fas fa-plus"></i> Add Contact
-            </button>
+            <p>Manage your contact list</p>
           </div>
           <div class="content-body">
+            <div style="margin-bottom: 1.5rem;">
+              <button class="btn btn-primary" onclick="addContact()">
+                <i class="fas fa-plus"></i> Add Contact
+              </button>
+            </div>
+
             <div class="card">
-              <table id="contactsTable">
-                <thead>
-                  <tr>
-                    <th>Name</th>
-                    <th>Email</th>
-                    <th>Phone</th>
-                    <th>Company</th>
-                    <th>Actions</th>
-                  </tr>
-                </thead>
-                <tbody></tbody>
-              </table>
+              <div class="card-header">
+                <div class="card-title">All Contacts</div>
+                <span class="badge badge-info">24 Contacts</span>
+              </div>
+              <div class="list-item">
+                <div class="list-item-content">
+                  <div class="list-item-title">Victoria Price</div>
+                  <div class="list-item-subtitle">+1 (555) 234-5678</div>
+                </div>
+                <div class="list-item-actions">
+                  <button class="btn btn-sm btn-primary" onclick="callContact()">
+                    <i class="fas fa-phone"></i> Call
+                  </button>
+                  <button class="btn btn-sm btn-secondary" onclick="editContact()">
+                    <i class="fas fa-edit"></i> Edit
+                  </button>
+                </div>
+              </div>
+              <div class="list-item">
+                <div class="list-item-content">
+                  <div class="list-item-title">Rachel Green</div>
+                  <div class="list-item-subtitle">+1 (555) 345-6789</div>
+                </div>
+                <div class="list-item-actions">
+                  <button class="btn btn-sm btn-primary" onclick="callContact()">
+                    <i class="fas fa-phone"></i> Call
+                  </button>
+                  <button class="btn btn-sm btn-secondary" onclick="editContact()">
+                    <i class="fas fa-edit"></i> Edit
+                  </button>
+                </div>
+              </div>
+              <div class="list-item">
+                <div class="list-item-content">
+                  <div class="list-item-title">Samuel Jackson</div>
+                  <div class="list-item-subtitle">+1 (555) 456-7890</div>
+                </div>
+                <div class="list-item-actions">
+                  <button class="btn btn-sm btn-primary" onclick="callContact()">
+                    <i class="fas fa-phone"></i> Call
+                  </button>
+                  <button class="btn btn-sm btn-secondary" onclick="editContact()">
+                    <i class="fas fa-edit"></i> Edit
+                  </button>
+                </div>
+              </div>
             </div>
           </div>
         </section>
 
-        <!-- DEALS -->
-        <section id="deals" class="section">
-          <div class="content-header">
-            <h1>Deals</h1>
-            <button class="btn btn-primary" onclick="openModal('dealModal')">
-              <i class="fas fa-plus"></i> Add Deal
-            </button>
-          </div>
-          <div class="content-body">
-            <div class="grid grid-2" id="dealsGrid"></div>
-          </div>
-        </section>
-
-        <!-- CAMPAIGNS -->
+        <!-- CAMPAIGNS SECTION -->
         <section id="campaigns" class="section">
           <div class="content-header">
             <h1>Campaigns</h1>
-            <button class="btn btn-primary" onclick="openModal('campaignModal')">
-              <i class="fas fa-plus"></i> New Campaign
-            </button>
+            <p>Create and manage marketing campaigns</p>
           </div>
           <div class="content-body">
-            <div class="grid grid-2" id="campaignsGrid"></div>
-          </div>
-        </section>
+            <div style="margin-bottom: 1.5rem;">
+              <button class="btn btn-primary" onclick="newCampaign()">
+                <i class="fas fa-rocket"></i> New Campaign
+              </button>
+            </div>
 
-        <!-- TASKS -->
-        <section id="tasks" class="section">
-          <div class="content-header">
-            <h1>Tasks</h1>
-            <button class="btn btn-primary" onclick="openModal('taskModal')">
-              <i class="fas fa-plus"></i> Add Task
-            </button>
-          </div>
-          <div class="content-body">
-            <div class="grid grid-2" id="tasksGrid"></div>
-          </div>
-        </section>
+            <div class="card">
+              <div class="card-header">
+                <div class="card-title">Active Campaigns</div>
+                <span class="badge badge-success">2 Running</span>
+              </div>
+              <div class="list-item">
+                <div class="list-item-content">
+                  <div class="list-item-title">Summer Promotion</div>
+                  <div class="list-item-subtitle">1,250 contacts • 48% open rate</div>
+                </div>
+                <div class="list-item-actions">
+                  <button class="btn btn-sm btn-secondary" onclick="pauseCampaign(this)">
+                    <i class="fas fa-pause"></i> Pause
+                  </button>
+                </div>
+              </div>
+              <div class="list-item">
+                <div class="list-item-content">
+                  <div class="list-item-title">Q3 Outreach</div>
+                  <div class="list-item-subtitle">892 contacts • 35% open rate</div>
+                </div>
+                <div class="list-item-actions">
+                  <button class="btn btn-sm btn-secondary" onclick="pauseCampaign(this)">
+                    <i class="fas fa-pause"></i> Pause
+                  </button>
+                </div>
+              </div>
+            </div>
 
-        <!-- REPORTS -->
-        <section id="reports" class="section">
-          <div class="content-header">
-            <h1>Reports</h1>
-          </div>
-          <div class="content-body">
-            <div class="grid grid-3">
-              <div class="stat-box">
-                <div class="stat-value" id="totalRevenue">$0</div>
-                <div class="stat-label">Total Revenue</div>
+            <div class="card">
+              <div class="card-header">
+                <div class="card-title">Scheduled</div>
               </div>
-              <div class="stat-box">
-                <div class="stat-value" id="conversionRate">0%</div>
-                <div class="stat-label">Conversion Rate</div>
-              </div>
-              <div class="stat-box">
-                <div class="stat-value" id="taskCompletion">0%</div>
-                <div class="stat-label">Task Completion</div>
+              <div class="list-item">
+                <div class="list-item-content">
+                  <div class="list-item-title">Fall Campaign</div>
+                  <div class="list-item-subtitle">Starts in 5 days</div>
+                </div>
+                <div class="list-item-actions">
+                  <button class="btn btn-sm btn-primary" onclick="startCampaign(this)">
+                    <i class="fas fa-play"></i> Start Now
+                  </button>
+                </div>
               </div>
             </div>
           </div>
         </section>
 
-        <!-- SETTINGS -->
+        <!-- REPORTS SECTION -->
+        <section id="reports" class="section">
+          <div class="content-header">
+            <h1>Reports & Analytics</h1>
+            <p>View detailed performance metrics</p>
+          </div>
+          <div class="content-body">
+            <div class="grid grid-2">
+              <div class="stat-box">
+                <div class="stat-value">92%</div>
+                <div class="stat-label">Call Resolution Rate</div>
+              </div>
+              <div class="stat-box">
+                <div class="stat-value">3.8</div>
+                <div class="stat-label">Avg Customer Rating</div>
+              </div>
+              <div class="stat-box">
+                <div class="stat-value">847</div>
+                <div class="stat-label">Calls Today</div>
+              </div>
+              <div class="stat-box">
+                <div class="stat-value">4m 23s</div>
+                <div class="stat-label">Avg Call Duration</div>
+              </div>
+            </div>
+
+            <div class="card">
+              <div class="card-header">
+                <div class="card-title">Top Performing Agents</div>
+              </div>
+              <div class="list-item">
+                <div class="list-item-content">
+                  <div class="list-item-title">Sarah Johnson</div>
+                  <div class="list-item-subtitle">156 calls • 94% satisfaction</div>
+                </div>
+                <span class="badge badge-success">★ 4.9</span>
+              </div>
+              <div class="list-item">
+                <div class="list-item-content">
+                  <div class="list-item-title">Mike Chen</div>
+                  <div class="list-item-subtitle">142 calls • 91% satisfaction</div>
+                </div>
+                <span class="badge badge-success">★ 4.7</span>
+              </div>
+              <div class="list-item">
+                <div class="list-item-content">
+                  <div class="list-item-title">Emma Davis</div>
+                  <div class="list-item-subtitle">138 calls • 89% satisfaction</div>
+                </div>
+                <span class="badge badge-success">★ 4.5</span>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ADMIN SECTION -->
+        <section id="admin" class="section">
+          <div class="content-header">
+            <h1>Admin Panel</h1>
+            <p>System administration and user management</p>
+          </div>
+          <div class="content-body">
+            <div style="margin-bottom: 1.5rem;">
+              <button class="btn btn-primary" onclick="addUser()">
+                <i class="fas fa-user-plus"></i> Add User
+              </button>
+              <button class="btn btn-secondary" onclick="exportData()">
+                <i class="fas fa-download"></i> Export Data
+              </button>
+            </div>
+
+            <div class="card">
+              <div class="card-header">
+                <div class="card-title">System Users</div>
+                <span class="badge badge-info">18 Users</span>
+              </div>
+              <div class="list-item">
+                <div class="list-item-content">
+                  <div class="list-item-title">Admin Account</div>
+                  <div class="list-item-subtitle">Administrator • Active</div>
+                </div>
+                <div class="list-item-actions">
+                  <button class="btn btn-sm btn-secondary" onclick="editUser()">
+                    <i class="fas fa-edit"></i> Edit
+                  </button>
+                </div>
+              </div>
+              <div class="list-item">
+                <div class="list-item-content">
+                  <div class="list-item-title">Support Team</div>
+                  <div class="list-item-subtitle">Manager • Active</div>
+                </div>
+                <div class="list-item-actions">
+                  <button class="btn btn-sm btn-secondary" onclick="editUser()">
+                    <i class="fas fa-edit"></i> Edit
+                  </button>
+                </div>
+              </div>
+              <div class="list-item">
+                <div class="list-item-content">
+                  <div class="list-item-title">Sales Team</div>
+                  <div class="list-item-subtitle">Agent • Inactive</div>
+                </div>
+                <div class="list-item-actions">
+                  <button class="btn btn-sm btn-secondary" onclick="editUser()">
+                    <i class="fas fa-edit"></i> Edit
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <div class="card">
+              <div class="card-header">
+                <div class="card-title">System Status</div>
+              </div>
+              <div class="list-item">
+                <div class="list-item-content">
+                  <div class="list-item-title">API Server</div>
+                  <div class="list-item-subtitle">Last checked: 2 minutes ago</div>
+                </div>
+                <span class="badge badge-success">Operational</span>
+              </div>
+              <div class="list-item">
+                <div class="list-item-content">
+                  <div class="list-item-title">Database</div>
+                  <div class="list-item-subtitle">Last checked: 1 minute ago</div>
+                </div>
+                <span class="badge badge-success">Operational</span>
+              </div>
+              <div class="list-item">
+                <div class="list-item-content">
+                  <div class="list-item-title">Backup Status</div>
+                  <div class="list-item-subtitle">Last backup: Today at 2:30 AM</div>
+                </div>
+                <span class="badge badge-info">Scheduled</span>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- SETTINGS SECTION -->
         <section id="settings" class="section">
           <div class="content-header">
             <h1>Settings</h1>
+            <p>Configure application settings</p>
           </div>
           <div class="content-body">
             <div class="card">
-              <div class="card-title">Data Management</div>
-              <div class="btn-group" style="margin-top: 1rem;">
-                <button class="btn btn-primary" onclick="exportAllData()">
-                  <i class="fas fa-download"></i> Export All Data
+              <div class="card-header">
+                <div class="card-title">General Settings</div>
+              </div>
+              <div class="form-group">
+                <label class="form-label">Company Name</label>
+                <input type="text" class="form-input" value="Switchboard CRM">
+              </div>
+              <div class="form-group">
+                <label class="form-label">Company Email</label>
+                <input type="email" class="form-input" value="support@switchboard.io">
+              </div>
+              <div style="margin-top: 1.5rem;">
+                <button class="btn btn-primary" onclick="saveSettings()">
+                  <i class="fas fa-save"></i> Save Changes
                 </button>
-                <button class="btn btn-primary" onclick="document.getElementById('importFile').click()">
-                  <i class="fas fa-upload"></i> Import Data
-                </button>
-                <button class="btn btn-danger" onclick="clearAllData()">
-                  <i class="fas fa-trash"></i> Clear All Data
-                </button>
+              </div>
+            </div>
+
+            <div class="card">
+              <div class="card-header">
+                <div class="card-title">Notification Preferences</div>
+              </div>
+              <div style="padding: 1rem 0;">
+                <label style="display: flex; align-items: center; gap: 0.75rem; cursor: pointer; margin-bottom: 0.75rem;">
+                  <input type="checkbox" checked style="cursor: pointer;">
+                  <span>Receive email notifications</span>
+                </label>
+                <label style="display: flex; align-items: center; gap: 0.75rem; cursor: pointer; margin-bottom: 0.75rem;">
+                  <input type="checkbox" checked style="cursor: pointer;">
+                  <span>Receive SMS alerts</span>
+                </label>
+                <label style="display: flex; align-items: center; gap: 0.75rem; cursor: pointer;">
+                  <input type="checkbox" style="cursor: pointer;">
+                  <span>Receive push notifications</span>
+                </label>
               </div>
             </div>
           </div>
         </section>
-      </div>
-    </div>
-  </div>
-
-  <!-- CONTACT MODAL -->
-  <div class="modal" id="contactModal">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h2 id="contactTitle">Add Contact</h2>
-        <button class="modal-close" onclick="closeModal('contactModal')">
-          <i class="fas fa-times"></i>
-        </button>
-      </div>
-      <form onsubmit="saveContact(event)">
-        <div class="form-group">
-          <label class="form-label">Name *</label>
-          <input class="form-input" type="text" id="contactName" required>
-        </div>
-        <div class="form-group">
-          <label class="form-label">Email *</label>
-          <input class="form-input" type="email" id="contactEmail" required>
-        </div>
-        <div class="form-group">
-          <label class="form-label">Phone *</label>
-          <input class="form-input" type="tel" id="contactPhone" required>
-        </div>
-        <div class="form-group">
-          <label class="form-label">Company</label>
-          <input class="form-input" type="text" id="contactCompany">
-        </div>
-        <div class="btn-group">
-          <button type="button" class="btn btn-secondary" onclick="closeModal('contactModal')">Cancel</button>
-          <button type="submit" class="btn btn-primary">Save Contact</button>
-        </div>
-      </form>
-    </div>
-  </div>
-
-  <!-- DEAL MODAL -->
-  <div class="modal" id="dealModal">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h2 id="dealTitle">Add Deal</h2>
-        <button class="modal-close" onclick="closeModal('dealModal')">
-          <i class="fas fa-times"></i>
-        </button>
-      </div>
-      <form onsubmit="saveDeal(event)">
-        <div class="form-group">
-          <label class="form-label">Deal Name *</label>
-          <input class="form-input" type="text" id="dealName" required>
-        </div>
-        <div class="form-group">
-          <label class="form-label">Amount *</label>
-          <input class="form-input" type="number" id="dealAmount" step="0.01" required>
-        </div>
-        <div class="form-group">
-          <label class="form-label">Stage</label>
-          <select class="form-input" id="dealStage">
-            <option>Prospect</option>
-            <option>Negotiation</option>
-            <option>Proposal</option>
-            <option>Closed</option>
-          </select>
-        </div>
-        <div class="btn-group">
-          <button type="button" class="btn btn-secondary" onclick="closeModal('dealModal')">Cancel</button>
-          <button type="submit" class="btn btn-primary">Save Deal</button>
-        </div>
-      </form>
-    </div>
-  </div>
-
-  <!-- CAMPAIGN MODAL -->
-  <div class="modal" id="campaignModal">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h2>New Campaign</h2>
-        <button class="modal-close" onclick="closeModal('campaignModal')">
-          <i class="fas fa-times"></i>
-        </button>
-      </div>
-      <form onsubmit="saveCampaign(event)">
-        <div class="form-group">
-          <label class="form-label">Campaign Name *</label>
-          <input class="form-input" type="text" id="campaignName" required>
-        </div>
-        <div class="form-group">
-          <label class="form-label">Type</label>
-          <select class="form-input" id="campaignType">
-            <option>Email</option>
-            <option>SMS</option>
-            <option>Social</option>
-          </select>
-        </div>
-        <div class="form-group">
-          <label class="form-label">Description</label>
-          <input class="form-input" type="text" id="campaignDesc">
-        </div>
-        <div class="btn-group">
-          <button type="button" class="btn btn-secondary" onclick="closeModal('campaignModal')">Cancel</button>
-          <button type="submit" class="btn btn-primary">Create Campaign</button>
-        </div>
-      </form>
-    </div>
-  </div>
-
-  <!-- TASK MODAL -->
-  <div class="modal" id="taskModal">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h2>Add Task</h2>
-        <button class="modal-close" onclick="closeModal('taskModal')">
-          <i class="fas fa-times"></i>
-        </button>
-      </div>
-      <form onsubmit="saveTask(event)">
-        <div class="form-group">
-          <label class="form-label">Task Title *</label>
-          <input class="form-input" type="text" id="taskTitle" required>
-        </div>
-        <div class="form-group">
-          <label class="form-label">Priority</label>
-          <select class="form-input" id="taskPriority">
-            <option>Low</option>
-            <option>Medium</option>
-            <option>High</option>
-          </select>
-        </div>
-        <div class="form-group">
-          <label class="form-label">Due Date</label>
-          <input class="form-input" type="date" id="taskDueDate">
-        </div>
-        <div class="btn-group">
-          <button type="button" class="btn btn-secondary" onclick="closeModal('taskModal')">Cancel</button>
-          <button type="submit" class="btn btn-primary">Save Task</button>
-        </div>
-      </form>
-    </div>
-  </div>
-
-  <!-- EXPORT MODAL -->
-  <div class="modal" id="exportModal">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h2>Export Data</h2>
-        <button class="modal-close" onclick="closeModal('exportModal')">
-          <i class="fas fa-times"></i>
-        </button>
-      </div>
-      <div class="btn-group" style="flex-direction: column;">
-        <button class="btn btn-primary" onclick="exportJSON()">
-          <i class="fas fa-file-code"></i> Export as JSON
-        </button>
-        <button class="btn btn-primary" onclick="exportCSV('contacts')">
-          <i class="fas fa-file-csv"></i> Export Contacts CSV
-        </button>
-        <button class="btn btn-primary" onclick="exportCSV('deals')">
-          <i class="fas fa-file-csv"></i> Export Deals CSV
-        </button>
-        <button class="btn btn-primary" onclick="exportCSV('campaigns')">
-          <i class="fas fa-file-csv"></i> Export Campaigns CSV
-        </button>
       </div>
     </div>
   </div>
 
   <script>
-    let appData = {
-      contacts: [],
-      deals: [],
-      campaigns: [],
-      tasks: []
-    };
+    // Theme Toggle
+    const themeToggle = document.getElementById('themeToggle');
+    const html = document.documentElement;
 
-    let editingId = null;
-    let editingType = null;
-
-    // Init
-    function init() {
-      loadData();
-      checkTheme();
-      updateDashboard();
-      renderAll();
-    }
-
-    // Theme
-    function toggleTheme() {
-      document.documentElement.classList.toggle('dark');
-      const isDark = document.documentElement.classList.contains('dark');
-      localStorage.setItem('theme', isDark ? 'dark' : 'light');
-      showToast('Theme changed');
-    }
-
-    function checkTheme() {
-      const theme = localStorage.getItem('theme');
-      if (theme === 'dark') {
-        document.documentElement.classList.add('dark');
+    function initTheme() {
+      const savedTheme = localStorage.getItem('theme') || 'light';
+      if (savedTheme === 'dark') {
+        html.classList.add('dark');
+        updateThemeIcon();
       }
     }
 
-    // Storage
-    function saveData() {
-      localStorage.setItem('crmData', JSON.stringify(appData));
+    function updateThemeIcon() {
+      const icon = themeToggle.querySelector('i');
+      if (html.classList.contains('dark')) {
+        icon.className = 'fas fa-sun';
+      } else {
+        icon.className = 'fas fa-moon';
+      }
     }
 
-    function loadData() {
-      const saved = localStorage.getItem('crmData');
-      if (saved) appData = JSON.parse(saved);
-    }
+    themeToggle.addEventListener('click', () => {
+      html.classList.toggle('dark');
+      const isDark = html.classList.contains('dark');
+      localStorage.setItem('theme', isDark ? 'dark' : 'light');
+      updateThemeIcon();
+      showToast(isDark ? 'Dark mode enabled' : 'Light mode enabled');
+    });
 
-    // Toast
-    function showToast(msg) {
-      const toast = document.createElement('div');
-      toast.className = 'toast';
-      toast.innerHTML = msg;
-      document.body.appendChild(toast);
-      setTimeout(() => toast.remove(), 3000);
-    }
+    // Sidebar Toggle
+    const menuToggle = document.getElementById('menuToggle');
+    const sidebar = document.getElementById('sidebar');
 
-    // Modal
-    function openModal(id) {
-      document.getElementById(id).classList.add('active');
-    }
+    menuToggle.addEventListener('click', () => {
+      sidebar.classList.toggle('active');
+    });
 
-    function closeModal(id) {
-      document.getElementById(id).classList.remove('active');
-      editingId = null;
-    }
+    // Close sidebar when clicking outside
+    document.addEventListener('click', (e) => {
+      if (!sidebar.contains(e.target) && !menuToggle.contains(e.target)) {
+        sidebar.classList.remove('active');
+      }
+    });
 
     // Navigation
-    function switchSection(id) {
-      document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
-      document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
-      document.getElementById(id).classList.add('active');
-      event.target.classList.add('active');
-      if (window.innerWidth <= 768) {
-        document.getElementById('sidebar').classList.remove('active');
-      }
+    const navItems = document.querySelectorAll('.nav-item');
+    const sections = document.querySelectorAll('.section');
+
+    navItems.forEach(item => {
+      item.addEventListener('click', () => {
+        const sectionId = item.getAttribute('data-section');
+        
+        navItems.forEach(nav => nav.classList.remove('active'));
+        sections.forEach(section => section.classList.remove('active'));
+
+        item.classList.add('active');
+        document.getElementById(sectionId).classList.add('active');
+        sidebar.classList.remove('active');
+      });
+    });
+
+    // Toast Notification
+    function showToast(message) {
+      const toast = document.createElement('div');
+      toast.className = 'toast';
+      toast.textContent = message;
+      document.body.appendChild(toast);
+
+      setTimeout(() => {
+        toast.style.animation = 'slideOut 0.3s ease forwards';
+        setTimeout(() => toast.remove(), 300);
+      }, 3000);
     }
 
-    function toggleSidebar() {
-      document.getElementById('sidebar').classList.toggle('active');
-    }
-
-    // Contacts
-    function saveContact(e) {
-      e.preventDefault();
-      const contact = {
-        id: editingId || Date.now(),
-        name: document.getElementById('contactName').value,
-        email: document.getElementById('contactEmail').value,
-        phone: document.getElementById('contactPhone').value,
-        company: document.getElementById('contactCompany').value
-      };
-      if (editingId) {
-        appData.contacts = appData.contacts.map(c => c.id === editingId ? contact : c);
-        showToast('Contact updated');
+    // Button Functions
+    function toggleMute(btn) {
+      const icon = btn.querySelector('i');
+      if (icon.className.includes('microphone')) {
+        icon.className = 'fas fa-microphone-slash';
+        btn.textContent = '';
+        btn.innerHTML = '<i class="fas fa-microphone-slash"></i> Muted';
+        showToast('Microphone muted');
       } else {
-        appData.contacts.push(contact);
-        showToast('Contact added');
-      }
-      saveData();
-      renderContacts();
-      updateDashboard();
-      closeModal('contactModal');
-    }
-
-    function editContact(id) {
-      const c = appData.contacts.find(x => x.id === id);
-      document.getElementById('contactTitle').textContent = 'Edit Contact';
-      document.getElementById('contactName').value = c.name;
-      document.getElementById('contactEmail').value = c.email;
-      document.getElementById('contactPhone').value = c.phone;
-      document.getElementById('contactCompany').value = c.company;
-      editingId = id;
-      openModal('contactModal');
-    }
-
-    function deleteContact(id) {
-      if (confirm('Delete contact?')) {
-        appData.contacts = appData.contacts.filter(c => c.id !== id);
-        saveData();
-        renderContacts();
-        updateDashboard();
-        showToast('Contact deleted');
+        icon.className = 'fas fa-microphone';
+        btn.textContent = '';
+        btn.innerHTML = '<i class="fas fa-microphone"></i> Mute';
+        showToast('Microphone unmuted');
       }
     }
 
-    function renderContacts() {
-      const tbody = document.querySelector('#contactsTable tbody');
-      tbody.innerHTML = appData.contacts.map(c => `
-        <tr>
-          <td>${c.name}</td>
-          <td>${c.email}</td>
-          <td>${c.phone}</td>
-          <td>${c.company || '-'}</td>
-          <td>
-            <button class="btn btn-sm btn-secondary" onclick="editContact(${c.id})">
-              <i class="fas fa-edit"></i>
-            </button>
-            <button class="btn btn-sm btn-danger" onclick="deleteContact(${c.id})">
-              <i class="fas fa-trash"></i>
-            </button>
-          </td>
-        </tr>
-      `).join('');
-    }
-
-    // Deals
-    function saveDeal(e) {
-      e.preventDefault();
-      const deal = {
-        id: editingId || Date.now(),
-        name: document.getElementById('dealName').value,
-        amount: parseFloat(document.getElementById('dealAmount').value),
-        stage: document.getElementById('dealStage').value
-      };
-      if (editingId) {
-        appData.deals = appData.deals.map(d => d.id === editingId ? deal : d);
-        showToast('Deal updated');
+    function toggleHold(btn) {
+      const icon = btn.querySelector('i');
+      if (icon.className.includes('pause')) {
+        icon.className = 'fas fa-play';
+        btn.textContent = '';
+        btn.innerHTML = '<i class="fas fa-play"></i> Resume';
+        showToast('Call on hold');
       } else {
-        appData.deals.push(deal);
-        showToast('Deal added');
-      }
-      saveData();
-      renderDeals();
-      updateDashboard();
-      closeModal('dealModal');
-    }
-
-    function deleteDeal(id) {
-      if (confirm('Delete deal?')) {
-        appData.deals = appData.deals.filter(d => d.id !== id);
-        saveData();
-        renderDeals();
-        updateDashboard();
-        showToast('Deal deleted');
+        icon.className = 'fas fa-pause';
+        btn.textContent = '';
+        btn.innerHTML = '<i class="fas fa-pause"></i> Hold';
+        showToast('Call resumed');
       }
     }
 
-    function renderDeals() {
-      const grid = document.getElementById('dealsGrid');
-      grid.innerHTML = appData.deals.map(d => `
-        <div class="card">
-          <div class="card-header">
-            <div><strong>${d.name}</strong></div>
-            <span class="badge badge-info">${d.stage}</span>
-          </div>
-          <div style="font-size: 1.5rem; color: var(--accent); font-weight: 700; margin: 1rem 0;">$${d.amount.toFixed(2)}</div>
-          <div class="btn-group">
-            <button class="btn btn-secondary btn-sm" onclick="editDeal(${d.id})">Edit</button>
-            <button class="btn btn-danger btn-sm" onclick="deleteDeal(${d.id})">Delete</button>
-          </div>
-        </div>
-      `).join('');
+    function transfer() {
+      showToast('Transfer initiated to support team');
     }
 
-    function editDeal(id) {
-      const d = appData.deals.find(x => x.id === id);
-      document.getElementById('dealTitle').textContent = 'Edit Deal';
-      document.getElementById('dealName').value = d.name;
-      document.getElementById('dealAmount').value = d.amount;
-      document.getElementById('dealStage').value = d.stage;
-      editingId = id;
-      openModal('dealModal');
+    function endCall() {
+      showToast('Call ended successfully');
     }
 
-    // Campaigns
-    function saveCampaign(e) {
-      e.preventDefault();
-      const campaign = {
-        id: editingId || Date.now(),
-        name: document.getElementById('campaignName').value,
-        type: document.getElementById('campaignType').value,
-        description: document.getElementById('campaignDesc').value,
-        status: 'Active'
-      };
-      appData.campaigns.push(campaign);
-      saveData();
-      renderCampaigns();
-      updateDashboard();
-      closeModal('campaignModal');
-      showToast('Campaign created');
+    function playVoicemail(btn) {
+      showToast('Playing voicemail...');
     }
 
-    function deleteCampaign(id) {
-      if (confirm('Delete campaign?')) {
-        appData.campaigns = appData.campaigns.filter(c => c.id !== id);
-        saveData();
-        renderCampaigns();
-        updateDashboard();
-        showToast('Campaign deleted');
-      }
+    function deleteVoicemail(btn) {
+      btn.closest('.list-item').style.opacity = '0.5';
+      showToast('Voicemail deleted');
     }
 
-    function renderCampaigns() {
-      const grid = document.getElementById('campaignsGrid');
-      grid.innerHTML = appData.campaigns.map(c => `
-        <div class="card">
-          <div class="card-header">
-            <div><strong>${c.name}</strong></div>
-            <span class="badge badge-success">${c.status}</span>
-          </div>
-          <div style="color: var(--text-secondary); margin: 1rem 0;">Type: ${c.type}</div>
-          <p style="margin-bottom: 1rem;">${c.description}</p>
-          <div class="btn-group">
-            <button class="btn btn-danger btn-sm" onclick="deleteCampaign(${c.id})">Delete</button>
-          </div>
-        </div>
-      `).join('');
+    function replyMessage() {
+      showToast('Reply window opened');
     }
 
-    // Tasks
-    function saveTask(e) {
-      e.preventDefault();
-      const task = {
-        id: editingId || Date.now(),
-        title: document.getElementById('taskTitle').value,
-        priority: document.getElementById('taskPriority').value,
-        dueDate: document.getElementById('taskDueDate').value,
-        completed: false
-      };
-      appData.tasks.push(task);
-      saveData();
-      renderTasks();
-      updateDashboard();
-      closeModal('taskModal');
-      showToast('Task added');
+    function addContact() {
+      showToast('New contact form opened');
     }
 
-    function completeTask(id) {
-      const t = appData.tasks.find(x => x.id === id);
-      t.completed = !t.completed;
-      saveData();
-      renderTasks();
-      updateDashboard();
+    function callContact() {
+      showToast('Calling contact...');
     }
 
-    function deleteTask(id) {
-      if (confirm('Delete task?')) {
-        appData.tasks = appData.tasks.filter(t => t.id !== id);
-        saveData();
-        renderTasks();
-        updateDashboard();
-        showToast('Task deleted');
-      }
+    function editContact() {
+      showToast('Edit mode activated');
     }
 
-    function renderTasks() {
-      const grid = document.getElementById('tasksGrid');
-      grid.innerHTML = appData.tasks.map(t => `
-        <div class="card">
-          <div style="display: flex; gap: 0.5rem; margin-bottom: 1rem;">
-            <input type="checkbox" ${t.completed ? 'checked' : ''} onchange="completeTask(${t.id})">
-            <div style="flex: 1;">
-              <strong style="${t.completed ? 'text-decoration: line-through;' : ''}">${t.title}</strong>
-              <div style="color: var(--text-secondary); font-size: 0.9rem;">${t.dueDate || 'No date'}</div>
-            </div>
-          </div>
-          <span class="badge ${t.priority === 'High' ? 'badge-danger' : t.priority === 'Medium' ? 'badge-warning' : 'badge-success'}">${t.priority}</span>
-          <div class="btn-group" style="margin-top: 1rem;">
-            <button class="btn btn-danger btn-sm" onclick="deleteTask(${t.id})">Delete</button>
-          </div>
-        </div>
-      `).join('');
+    function newCampaign() {
+      showToast('Creating new campaign...');
     }
 
-    // Dashboard
-    function updateDashboard() {
-      document.getElementById('totalContacts').textContent = appData.contacts.length;
-      document.getElementById('totalDeals').textContent = appData.deals.length;
-      document.getElementById('totalCampaigns').textContent = appData.campaigns.length;
-
-      const activities = [];
-      appData.contacts.slice(-3).forEach(c => activities.push(`Added contact: <strong>${c.name}</strong>`));
-      appData.deals.slice(-2).forEach(d => activities.push(`Created deal: <strong>${d.name}</strong>`));
-      document.getElementById('recentActivities').innerHTML = activities.length ? 
-        activities.map(a => `<div style="padding: 0.5rem 0;"><i class="fas fa-check" style="color: var(--success);"></i> ${a}</div>`).join('') :
-        '<div style="color: var(--text-secondary);">No activities yet</div>';
-
-      // Reports
-      const totalRevenue = appData.deals.reduce((sum, d) => sum + d.amount, 0);
-      const closedDeals = appData.deals.filter(d => d.stage === 'Closed').length;
-      const conversionRate = appData.deals.length ? Math.round((closedDeals / appData.deals.length) * 100) : 0;
-      const completedTasks = appData.tasks.filter(t => t.completed).length;
-      const taskCompletion = appData.tasks.length ? Math.round((completedTasks / appData.tasks.length) * 100) : 0;
-
-      document.getElementById('totalRevenue').textContent = '$' + totalRevenue.toFixed(0);
-      document.getElementById('conversionRate').textContent = conversionRate + '%';
-      document.getElementById('taskCompletion').textContent = taskCompletion + '%';
+    function pauseCampaign(btn) {
+      showToast('Campaign paused');
+      btn.innerHTML = '<i class="fas fa-play"></i> Resume';
+      btn.onclick = () => resumeCampaign(btn);
     }
 
-    // Export/Import
-    function exportJSON() {
-      const data = JSON.stringify(appData, null, 2);
-      const blob = new Blob([data], { type: 'application/json' });
-      const url = URL.createObjectURL(blob);
-      const a = document.createElement('a');
-      a.href = url;
-      a.download = `crm-data-${new Date().toISOString().split('T')[0]}.json`;
-      a.click();
-      showToast('Data exported');
-      closeModal('exportModal');
+    function startCampaign(btn) {
+      showToast('Campaign started successfully');
+      btn.innerHTML = '<i class="fas fa-pause"></i> Pause';
+      btn.onclick = () => pauseCampaign(btn);
     }
 
-    function exportCSV(type) {
-      let csv = '';
-      if (type === 'contacts') {
-        csv = 'Name,Email,Phone,Company\n';
-        appData.contacts.forEach(c => csv += `"${c.name}","${c.email}","${c.phone}","${c.company}"\n`);
-      } else if (type === 'deals') {
-        csv = 'Deal,Amount,Stage\n';
-        appData.deals.forEach(d => csv += `"${d.name}","${d.amount}","${d.stage}"\n`);
-      } else if (type === 'campaigns') {
-        csv = 'Campaign,Type,Description\n';
-        appData.campaigns.forEach(c => csv += `"${c.name}","${c.type}","${c.description}"\n`);
-      }
-      const blob = new Blob([csv], { type: 'text/csv' });
-      const url = URL.createObjectURL(blob);
-      const a = document.createElement('a');
-      a.href = url;
-      a.download = `${type}-${new Date().toISOString().split('T')[0]}.csv`;
-      a.click();
-      showToast(`${type} exported`);
-      closeModal('exportModal');
+    function resumeCampaign(btn) {
+      showToast('Campaign resumed');
+      btn.innerHTML = '<i class="fas fa-pause"></i> Pause';
+      btn.onclick = () => pauseCampaign(btn);
     }
 
-    function exportAllData() {
-      exportJSON();
+    function addUser() {
+      showToast('Add user form opened');
     }
 
-    function importData(e) {
-      const file = e.target.files[0];
-      if (!file) return;
-      const reader = new FileReader();
-      reader.onload = f => {
-        try {
-          appData = JSON.parse(f.target.result);
-          saveData();
-          renderAll();
-          updateDashboard();
-          showToast('Data imported');
-        } catch (err) {
-          showToast('Import error');
-        }
-      };
-      reader.readAsText(file);
+    function exportData() {
+      showToast('Exporting data...');
     }
 
-    function clearAllData() {
-      if (confirm('Clear all data? This cannot be undone.')) {
-        appData = { contacts: [], deals: [], campaigns: [], tasks: [] };
-        saveData();
-        renderAll();
-        updateDashboard();
-        showToast('Data cleared');
-      }
+    function editUser() {
+      showToast('User edit form opened');
     }
 
-    function renderAll() {
-      renderContacts();
-      renderDeals();
-      renderCampaigns();
-      renderTasks();
+    function saveSettings() {
+      showToast('Settings saved successfully');
     }
 
-    window.addEventListener('load', init);
+    // Initialize
+    initTheme();
   </script>
 </body>
 </html>
