@@ -567,7 +567,7 @@ const state = {
   systemStatus: [
     {name:'ARI (Asterisk REST Interface)', status:'operational', detail:'Simulated — HTTP+WebSocket call control'},
     {name:'AMI (Asterisk Manager Interface)', status:'operational', detail:'Simulated — TCP event stream'},
-    {name:'Realtime Dialplan (PostgreSQL)', status:'operational', detail:'Simulated — DID/extension writes'},
+    {name:'Realtime Dialplan', status:'operational', detail:'Simulated — DID/extension writes'},
     {name:'MinIO Recording Storage', status:'operational', detail:'Simulated — recording upload target'},
   ],
 
@@ -1664,9 +1664,9 @@ function systemHTML(){
   return `<div class="card"><div class="card-header"><div class="card-title">System status</div></div>
     ${state.systemStatus.map(s=>`<div class="list-item"><div class="list-item-content"><i class="fas fa-server" style="width:20px;color:var(--live)"></i><div><div class="list-item-title" style="font-size:.85rem">${esc(s.name)}</div><div class="list-item-subtitle">${esc(s.detail)}</div></div></div><span class="badge badge-success">Operational</span></div>`).join('')}
   </div>
-  <div class="card" style="border-color:var(--info)"><div class="card-header no-line"><div class="card-title"><i class="fas fa-circle-info" style="color:var(--info)"></i> About this environment</div></div>
-    <p style="font-size:.83rem;color:var(--ink-soft);line-height:1.6">This console simulates the full CRM ↔ Asterisk integration (ARI call control, AMI events, and the realtime dialplan) entirely in the browser, since a live SIP trunk and a persistent AMI TCP socket both require a server backend. Wiring it to a real Asterisk box means standing up the Node.js layer described in the integration reference — <span class="mono">asterisk-ari-client</span> + <span class="mono">asterisk-ami</span> + Prisma/PostgreSQL for realtime — and pointing these same UI actions at its endpoints.</p>
-  </div>`;
+  // <div class="card" style="border-color:var(--info)"><div class="card-header no-line"><div class="card-title"><i class="fas fa-circle-info" style="color:var(--info)"></i> About this environment</div></div>
+  //   <p style="font-size:.83rem;color:var(--ink-soft);line-height:1.6">This console simulates the full CRM ↔ Asterisk integration (ARI call control, AMI events, and the realtime dialplan) entirely in the browser, since a live SIP trunk and a persistent AMI TCP socket both require a server backend. Wiring it to a real Asterisk box means standing up the Node.js layer described in the integration reference — <span class="mono">asterisk-ari-client</span> + <span class="mono">asterisk-ami</span> + Prisma/PostgreSQL for realtime — and pointing these same UI actions at its endpoints.</p>
+  // </div>`;
 }
 function provisionTenant(){
   openModal('Provision a new tenant', `
@@ -1676,7 +1676,7 @@ function provisionTenant(){
   `, `<button class="btn btn-secondary" data-action="closeModal">Cancel</button><button class="btn btn-primary" id="tnGoBtn"><i class="fas fa-play"></i> Provision</button>`);
   $('#tnGoBtn').onclick = ()=>{
     const name = $('#tnName').value.trim(); if(!name){ toast('Tenant name required','warn','fa-triangle-exclamation'); return; }
-    const steps = ['PostgreSQL schema created','Valkey namespace created','Qdrant collection created','DID assigned','SIP extensions provisioned','Tenant notified'];
+    const steps = ['MongoDB schema created','Valkey namespace created','Qdrant collection created','DID assigned','SIP extensions provisioned','Tenant notified'];
     $('#tnGoBtn').disabled = true;
     $('#tnSteps').innerHTML = `<div class="divider"></div><div class="stepper">${steps.map((s,i)=>`<div class="step" id="tnstep-${i}"><div class="step-dot"><i class="fas fa-circle" style="font-size:.4rem"></i></div><div class="step-body"><strong>${s}</strong></div></div>`).join('')}</div>`;
     steps.forEach((s,i)=>setTimeout(()=>{
