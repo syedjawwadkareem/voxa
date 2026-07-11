@@ -1663,8 +1663,6 @@ function billingHTML(){
 function systemHTML(){
   return `<div class="card"><div class="card-header"><div class="card-title">System status</div></div>
     ${state.systemStatus.map(s=>`<div class="list-item"><div class="list-item-content"><i class="fas fa-server" style="width:20px;color:var(--live)"></i><div><div class="list-item-title" style="font-size:.85rem">${esc(s.name)}</div><div class="list-item-subtitle">${esc(s.detail)}</div></div></div><span class="badge badge-success">Operational</span></div>`).join('')}
-  </div>
-  <div class="card" style="border-color:var(--info)"><div class="card-header no-line"><div class="card-title"><i class="fas fa-circle-info" style="color:var(--info)"></i> About this environment</div></div>
   </div>`;
 }
 function provisionTenant(){
